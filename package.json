@@ -1,0 +1,31 @@
+{
+  "name": "ToDoist-Playwright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test:fe": "playwright test",
+    "test:report": "npx playwright show-report",
+    "test:allure": "npx playwright test --reporter=line,experimental-allure-playwright",
+    "allure:open": "npx allure open ./allure-report",
+   
+    "allure:report": "npx allure generate ./allure-results --clean",
+    "allure:serve":"npx allure serve",
+    "posttest":"npm run allure:generate",
+    "test:api": "playwright",
+
+    "test:be": "newman run ./e2e_BE/BackEnd_newman/collection/Todoist.postman_collection.json -e ./e2e_BE/BackEnd_newman/envVariables/QA_Environment.postman_environment.json -d ./e2e_BE/BackEnd_newman/data/TDD.txt -r htmlextra --reporter-htmlextra-export './test-reports/reportBE.html'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.25.1",
+    "allure-commandline": "^2.18.1",
+    "allure-playwright": "^2.0.0-beta.19",
+    "experimental-allure-playwright": "0.0.3"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.1"
+  }
+}
